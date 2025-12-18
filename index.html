@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.Lex – AI Asistent za zaštitu životne sredine</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- Hero Section -->
+    <header class="bg-green-100 py-12 px-4 text-center">
+        <img src="assets/logo.png" alt="Logo projekta" class="mx-auto w-32 mb-4">
+        <h1 class="text-4xl font-bold text-green-700">A.Lex</h1>
+        <p class="mt-2 text-xl text-gray-700">AI asistent za pravnu zaštitu životne sredine</p>
+        <a href="#chat" class="mt-6 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Postavi pitanje</a>
+    </header>
+
+    <!-- How it Works -->
+    <section class="py-16 px-6 max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl font-semibold mb-8 text-green-700">Kako A.Lex funkcioniše?</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div>
+                <div class="text-5xl mb-2">1️⃣</div>
+                <p>Postavi pitanje u vezi sa ekološkim pravima.</p>
+            </div>
+            <div>
+                <div class="text-5xl mb-2">2️⃣</div>
+                <p>A.Lex koristi pravne smernice i AI da pruži odgovor.</p>
+            </div>
+            <div>
+                <div class="text-5xl mb-2">3️⃣</div>
+                <p>Dobićeš jasne informacije gde i kako da reaguješ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Project -->
+    <section class="bg-gray-100 py-12 px-6 text-center">
+        <h2 class="text-xl font-semibold text-green-700 mb-4">O projektu</h2>
+        <p class="max-w-3xl mx-auto">Projekat A.Lex se realizuje uz podršku <strong>Švedske agencije za međunarodnu razvojnu saradnju – Sida</strong>, a sprovode ga <strong>YUCOM – Komitet pravnika za ljudska prava</strong> i <strong>Udruženje tužilaca Srbije</strong>, u okviru programa „Ozelenjavanje pravde“.</p>
+    </section>
+
+    <!-- Chatbot Section -->
+    <!-- Add this inside your existing index.html -->
+    <div id="chatbox" style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
+    <div id="messages" style="border: 1px solid #ccc; padding: 1rem; height: 300px; overflow-y: scroll;"></div>
+    <form id="chat-form" style="margin-top: 1rem;">
+        <input type="text" id="user-input" placeholder="Postavite pitanje A.Lex-u..." style="width: 80%;" />
+        <button type="submit">Pošalji</button>
+    </form>
+    </div>
+
+    <script>
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("user-input");
+    const messages = document.getElementById("messages");
+
+    function addMessage(text, sender = "user") {
+        const msg = document.createElement("div");
+        msg.textContent = text;
+        msg.style.padding = "0.5rem";
+        msg.style.margin = "0.5rem 0";
+        msg.style.backgroundColor = sender === "user" ? "#eef" : "#dfd";
+        msg.style.borderRadius = "5px";
+        messages.appendChild(msg);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const question = input.value.trim();
+        if (!question) return;
+        addMessage(question, "user");
+        input.value = "";
+
+        addMessage("A.Lex razmišlja...", "bot");
+
+        try {
+            const response = await fetch("https://mstrak.app.n8n.cloud/webhook/alex", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json();
+            const output = data.text || data.message || "Greška u odgovoru.";
+            messages.lastChild.remove(); // remove "thinking..."
+            addMessage(output.replace(/\\n/g, "<br>"), "bot");
+        } catch (err) {
+            messages.lastChild.remove();
+            addMessage("Došlo je do greške prilikom povezivanja sa A.Lex agentom.", "bot");
+        }
+    });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-green-800 text-white py-6 text-center">
+        <p>&copy; 2025 A.Lex. Sva prava zadržana.</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <img src="assets/yucom.png" alt="YUCOM" class="h-8">
+            <img src="assets/uts.png" alt="UTS" class="h-8">
+            <img src="assets/sida.png" alt="SIDA" class="h-8">
+        </div>
+    </footer>
+
+</body>
+</html>
