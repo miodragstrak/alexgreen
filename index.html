@@ -15,7 +15,7 @@
 
   <!-- Hero Section -->
   <header class="bg-green-100 py-12 px-4 text-center">
-    <img src="assets/logo.png" alt="Logo projekta" class="mx-auto w-32 mb-4">
+    <img src="assets/logo.png" alt="Logo projekta" class="mx-auto w-96 mb-4">
     <h1 class="text-4xl font-bold text-green-700">A.Lex</h1>
     <p class="mt-2 text-xl text-gray-700">AI asistent za pravnu zaštitu životne sredine</p>
     <a href="#chat" class="mt-6 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Postavi pitanje</a>
@@ -27,15 +27,15 @@
     <div class="grid md:grid-cols-3 gap-6">
       <div>
         <div class="text-5xl mb-2">1️⃣</div>
-        <p>Postavi pitanje u vezi sa ekološkim pravima.</p>
+        <p>Postavi pitanje u vezi sa pravnom zaštitom životne sredine.</p>
       </div>
       <div>
         <div class="text-5xl mb-2">2️⃣</div>
-        <p>A.Lex koristi pravne smernice i AI da pruži odgovor.</p>
+        <p>A.Lex koristi pravne smernice i AI da pripremi adekvatan odgovor.</p>
       </div>
       <div>
         <div class="text-5xl mb-2">3️⃣</div>
-        <p>Dobićeš jasne informacije gde i kako da reaguješ.</p>
+        <p>Dobićeš jasne informacije gde i kako da  u vezi sa zaštitom svojih prava.</p>
       </div>
     </div>
   </section>
@@ -43,16 +43,19 @@
   <!-- About the Project -->
   <section class="bg-gray-100 py-12 px-6 text-center">
     <h2 class="text-xl font-semibold text-green-700 mb-4">O projektu</h2>
-    <p class="max-w-3xl mx-auto">Projekat A.Lex se realizuje uz podršku <strong>Švedske agencije za međunarodnu razvojnu saradnju – Sida</strong>, a sprovode ga <strong>YUCOM – Komitet pravnika za ljudska prava</strong> i <strong>Udruženje tužilaca Srbije</strong>, u okviru programa „Ozelenjavanje pravde“.</p>
+    <p class="max-w-3xl mx-auto">Projekat A.Lex se realizuje uz podršku <strong>Švedske agencije za međunarodnu razvojnu saradnju - Sida</strong>, a sprovode ga <strong>YUCOM - Komitet pravnika za ljudska prava</strong> i <strong>Udruženje tužilaca Srbije</strong>, u okviru programa „Ozelenjavanje pravde“.</p>
   </section>
 
   <!-- Chatbot Section -->
-  <div id="chat" style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
-    <div id="messages" style="border: 1px solid #ccc; padding: 1rem; height: 300px; overflow-y: scroll;"></div>
-    <form id="chat-form" style="margin-top: 1rem;">
-      <input type="text" id="user-input" placeholder="Postavite pitanje A.Lex-u..." style="width: 80%;" />
-      <button type="submit">Pošalji</button>
-    </form>
+  <div id="chat" class="max-w-2xl mx-auto my-12 px-4">
+    <div class="bg-white shadow-lg rounded-lg border border-gray-300 p-4">
+      <h3 class="text-lg font-semibold text-green-700 mb-2">Pitaj A.Lexa bilo šta u vezi sa zaštitom životne sredine</h3>
+      <div id="messages" class="h-64 overflow-y-scroll space-y-2 bg-gray-50 p-2 rounded border border-gray-200"></div>
+      <form id="chat-form" class="mt-4 flex gap-2">
+        <input type="text" id="user-input" placeholder="Unesi pitanje ovde..." class="flex-grow p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-green-500" />
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Pošalji</button>
+      </form>
+    </div>
   </div>
 
   <!-- Chat script -->
@@ -65,10 +68,10 @@
 
     function addMessage(text, sender = "user") {
       const msg = document.createElement("div");
-      msg.className = sender === "user" ? "bg-blue-100" : "bg-green-100";
-      msg.style.padding = "0.5rem";
-      msg.style.margin = "0.5rem 0";
-      msg.style.borderRadius = "5px";
+      msg.className = sender === "user"
+        ? "bg-blue-100 text-left p-2 rounded-lg"
+        : "bg-green-100 text-left p-2 rounded-lg";
+
       msg.innerHTML = text;
       messages.appendChild(msg);
       messages.scrollTop = messages.scrollHeight;
@@ -102,12 +105,12 @@
   </script>
 
   <!-- Footer -->
-  <footer class="bg-green-800 text-white py-6 text-center">
+  <footer class="bg-green-500 text-white py-6 text-center">
     <p>&copy; 2025 A.Lex. Sva prava zadržana.</p>
     <div class="flex justify-center gap-4 mt-4">
-      <img src="assets/yucom.png" alt="YUCOM" class="h-8">
-      <img src="assets/uts.png" alt="UTS" class="h-8">
-      <img src="assets/sida.png" alt="SIDA" class="h-8">
+      <img src="assets/yucom.png" alt="YUCOM" class="h-12">
+      <img src="assets/uts.png" alt="UTS" class="h-16">
+      <img src="assets/sida.png" alt="SIDA" class="h-16">
     </div>
   </footer>
 </body>
