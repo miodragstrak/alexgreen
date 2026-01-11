@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+
+# dotenv config
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build artifacts
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE configs
+.vscode/
+.idea/
+
+# Optional: if deploying to Vercel/Netlify
+.vercel/
+.netlify/
+
+# Cache
+.cache/
