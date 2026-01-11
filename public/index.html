@@ -70,14 +70,30 @@
     localStorage.setItem("alex-session", sessionId);
 
     function cleanResponse(text) {
-      return text.replace(/【\d+:\d+†.*?†】/g, '');
+      if (!text) return "";
+
+      return text
+        // uklanja OpenAI citation blokove: , , 【file】
+        .replace(/【[^】]*】/g, "")
+        
+        // uklanja [1], [2], [12]...
+        .replace(/\[\d+\]/g, "")
+        
+        // uklanja footnote stil: [^1], [^23]
+        .replace(/\[\^\d+\]/g, "")
+        
+        // čisti višak razmaka
+        .replace(/\s{2,}/g, " ")
+        .trim();
     }
     
     function markdownToHTML(text) {
-      return cleanResponse(text)
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')         // bold
-        .replace(/\n\s*\n/g, '<br><br>')                           // prazni redovi
-        .replace(/\n/g, '<br>');                                   // novi redovi
+      const cleaned = cleanResponse(text);
+
+      return cleaned
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') 
+        .replace(/\n\s*\n/g, '<br><br>')                  
+        .replace(/\n/g, '<br>');                          
     }
 
     function addMessage(text, sender = "user") {
