@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="favicon.png" type="image/png" />
   <title>A.Lex – AI Asistent za zaštitu životne sredine</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -122,7 +123,7 @@
 
       addMessage(question, "user");
       input.value = "";
-      addMessage("A.Lex razmišlja...", "bot");
+      addMessage("⏳ A.Lex razmišlja i priprema odgovor... Ovo može potrajati nekoliko sekundi. Hvala na strpljenju.", "bot");
       animateSpeaking(true);
 
       try {
