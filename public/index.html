@@ -2,174 +2,307 @@
 <html lang="sr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon.png" type="image/png" />
   <title>A.Lex – AI Asistent za zaštitu životne sredine</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+  />
+
   <style>
     html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
+
 <body class="bg-white text-gray-800 font-sans">
 
   <!-- Hero Section -->
   <header class="bg-green-100 py-12 px-4 text-center">
-    <img src="assets/logo.png" alt="Logo projekta" class="mx-auto w-96 mb-4">
+    <img src="assets/logo.png" alt="Logo projekta" class="mx-auto w-96 mb-4" />
+
     <h1 class="text-4xl font-bold text-green-700">A.Lex</h1>
-    <p class="mt-2 text-xl text-gray-700">AI asistent za pravnu zaštitu životne sredine</p>
-    <a href="#chat" class="mt-6 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Postavi pitanje</a>
+
+    <p class="mt-2 text-xl text-gray-700">
+      AI asistent za pravnu zaštitu životne sredine
+    </p>
+
+    <a
+      href="#chat"
+      class="mt-6 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+    >
+      Postavi pitanje
+    </a>
   </header>
 
   <!-- How it Works -->
   <section class="py-16 px-6 max-w-4xl mx-auto text-center">
-    <h2 class="text-2xl font-semibold mb-8 text-green-700">Kako A.Lex funkcioniše?</h2>
+    <h2 class="text-2xl font-semibold mb-8 text-green-700">
+      Kako A.Lex funkcioniše?
+    </h2>
+
     <div class="grid md:grid-cols-3 gap-6">
       <div>
         <div class="text-5xl mb-2">1️⃣</div>
-        <p>Postavi pitanje u vezi sa pravnom zaštitom životne sredine.</p>
+        <p>Postavi pitanje u vezi sa zaštitom životne sredine.</p>
       </div>
+
       <div>
         <div class="text-5xl mb-2">2️⃣</div>
-        <p>A.Lex koristi pravne smernice i AI da pripremi adekvatan odgovor.</p>
+        <p>
+          A.Lex koristi javno dostupne YUCOM publikacije i AI da pripremi informativni odgovor.
+        </p>
       </div>
+
       <div>
         <div class="text-5xl mb-2">3️⃣</div>
-        <p>Dobićeš jasne informacije gde i kako da  u vezi sa zaštitom svojih prava.</p>
+        <p>
+          Dobijaš sažeto objašnjenje pravnog i institucionalnog konteksta.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- About the Project -->
+  <!-- About -->
   <section class="bg-gray-100 py-12 px-6 text-center">
-    <h2 class="text-xl font-semibold text-green-700 mb-4">O projektu</h2>
-    <p class="max-w-3xl mx-auto">Projekat A.Lex se realizuje uz podršku <strong>Švedske agencije za međunarodnu razvojnu saradnju - Sida</strong>, a sprovode ga <strong>YUCOM - Komitet pravnika za ljudska prava</strong> i <strong>Udruženje tužilaca Srbije</strong>, u okviru programa „Ozelenjavanje pravde“.</p>
+    <h2 class="text-xl font-semibold text-green-700 mb-4">
+      O projektu
+    </h2>
+
+    <p class="max-w-3xl mx-auto">
+      Projekat A.Lex se realizuje uz podršku
+      <strong>Švedske agencije za međunarodnu razvojnu saradnju – Sida</strong>,
+      a sprovode ga
+      <strong>YUCOM – Komitet pravnika za ljudska prava</strong>
+      i
+      <strong>Udruženje tužilaca Srbije</strong>,
+      u okviru programa „Ozelenjavanje pravde“.
+    </p>
   </section>
 
   <!-- Disclaimer -->
   <section class="max-w-2xl mx-auto px-4 mt-12 mb-4">
     <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded">
       <span class="font-bold mr-2">⚠️ Napomena:</span>
-      A.Lex ne predstavlja zamenu za stručni pravni savet. Alat je osmišljen kao dodatni izvor informacija koji može pomoći građanima da se lakše snađu u oblasti zaštite životne sredine.
+      A.Lex ne predstavlja zamenu za stručni pravni savet.
+      Alat služi kao dodatni izvor informacija za lakše snalaženje
+      u oblasti zaštite životne sredine.
     </div>
   </section>
 
-  <!-- Chatbot Section -->
+  <!-- Chat -->
   <div id="chat" class="max-w-2xl mx-auto my-12 px-4">
     <div class="bg-white shadow-lg rounded-lg border border-gray-300 p-4">
-      <h3 class="text-lg font-semibold text-green-700 mb-2">Pitaj A.Lexa bilo šta u vezi sa zaštitom životne sredine</h3>
-      <div id="messages" class="h-64 overflow-y-scroll space-y-2 bg-gray-50 p-2 rounded border border-gray-200"></div>
-      <form id="chat-form" class="mt-4 flex gap-2">
-        <input type="text" id="user-input" placeholder="Unesi pitanje ovde..." class="flex-grow p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-green-500" />
-        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Pošalji</button>
-        <div class="relative w-full flex justify-end">
-          <img id="alex-avatar" src="assets/alex_idle.gif" class="w-16 mr-2" />
+
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-green-700">
+          Pitaj A.Lexa bilo šta u vezi sa zaštitom životne sredine
+        </h3>
+
+        <button
+          id="reset-chat"
+          type="button"
+          class="text-sm text-gray-500 hover:text-green-700"
+        >
+          Novi razgovor
+        </button>
+      </div>
+
+      <div
+        id="messages"
+        class="h-64 overflow-y-scroll space-y-2 bg-gray-50 p-2 rounded border border-gray-200"
+      ></div>
+
+      <form id="chat-form" class="mt-4 flex gap-2 items-center">
+
+        <input
+          type="text"
+          id="user-input"
+          placeholder="Unesi pitanje ovde..."
+          class="flex-grow p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-green-500"
+        />
+
+        <button
+          type="submit"
+          class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+        >
+          Pošalji
+        </button>
+
+        <div class="flex justify-end">
+          <img
+            id="alex-avatar"
+            src="assets/alex_idle.gif"
+            class="w-16 mr-2"
+            alt="A.Lex"
+          />
         </div>
+
       </form>
     </div>
   </div>
 
-  <!-- Chat script -->
   <script>
     const form = document.getElementById("chat-form");
     const input = document.getElementById("user-input");
     const messages = document.getElementById("messages");
-    const sessionId = localStorage.getItem("alex-session") || crypto.randomUUID();
-    localStorage.setItem("alex-session", sessionId);
+    const resetButton = document.getElementById("reset-chat");
+
+    let previousResponseId =
+      localStorage.getItem("alex-last-response-id") || null;
 
     function cleanResponse(text) {
       if (!text) return "";
 
       return text
-        // uklanja OpenAI citation blokove: , , 【file】
         .replace(/【[^】]*】/g, "")
-        
-        // uklanja [1], [2], [12]...
         .replace(/\[\d+\]/g, "")
-        
-        // uklanja footnote stil: [^1], [^23]
         .replace(/\[\^\d+\]/g, "")
-        
-        // čisti višak razmaka
-        .replace(/\s{2,}/g, " ")
         .trim();
     }
-    
+
     function markdownToHTML(text) {
       const cleaned = cleanResponse(text);
 
       return cleaned
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') 
-        .replace(/\n\s*\n/g, '<br><br>')                  
-        .replace(/\n/g, '<br>');                          
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\n\s*\n/g, "<br><br>")
+        .replace(/\n/g, "<br>");
     }
 
     function addMessage(text, sender = "user") {
       const msg = document.createElement("div");
-      msg.className = sender === "user"
-        ? "bg-blue-100 text-left p-2 rounded-lg"
-        : "bg-green-100 text-left p-2 rounded-lg";
+
+      msg.className =
+        sender === "user"
+          ? "bg-blue-100 text-left p-2 rounded-lg"
+          : "bg-green-100 text-left p-2 rounded-lg";
 
       msg.innerHTML = markdownToHTML(text);
+
       messages.appendChild(msg);
       messages.scrollTop = messages.scrollHeight;
     }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
       const question = input.value.trim();
       if (!question) return;
 
       addMessage(question, "user");
       input.value = "";
-      addMessage("⏳ A.Lex razmišlja i priprema odgovor... Ovo može potrajati nekoliko sekundi. Hvala na strpljenju.", "bot");
+
+      addMessage(
+        "⏳ A.Lex razmišlja i priprema odgovor... Ovo može potrajati nekoliko sekundi. Hvala na strpljenju.",
+        "bot"
+      );
+
       animateSpeaking(true);
 
       try {
         const response = await fetch("/api", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: question, sessionId })
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: question,
+            previousResponseId
+          })
         });
 
         const data = await response.json();
-        const output = data.text || data.message || "Greška u odgovoru.";
+
+        if (!response.ok) {
+          console.error("A.Lex API error:", data);
+          throw new Error(data.error || "API request failed");
+        }
+
+        if (data.responseId) {
+          previousResponseId = data.responseId;
+
+          localStorage.setItem(
+            "alex-last-response-id",
+            previousResponseId
+          );
+        }
+
+        const output =
+          data.text ||
+          data.message ||
+          "Greška u odgovoru.";
+
         messages.lastChild.remove();
+
         addMessage(output, "bot");
+
         animateSpeaking(false);
+
       } catch (err) {
-        messages.lastChild.remove();
-        addMessage("Došlo je do greške prilikom povezivanja sa A.Lex agentom.", "bot");
+        console.error("Chat error:", err);
+
+        if (messages.lastChild) {
+          messages.lastChild.remove();
+        }
+
+        addMessage(
+          "Došlo je do greške prilikom povezivanja sa A.Lex agentom.",
+          "bot"
+        );
+
         animateSpeaking(false);
       }
     });
 
+    resetButton.addEventListener("click", () => {
+      previousResponseId = null;
+
+      localStorage.removeItem("alex-last-response-id");
+
+      messages.innerHTML = "";
+
+      addMessage(
+        "Novi razgovor je započet. Kako mogu da pomognem?",
+        "bot"
+      );
+    });
+
     function animateSpeaking(start = true) {
       const avatar = document.getElementById("alex-avatar");
+
       if (!avatar) return;
 
       if (start) {
         const intervalId = setInterval(() => {
-          avatar.src = avatar.src.includes("idle") ? "assets/alex_speaking.gif" : "assets/alex_idle.gif";
+          avatar.src = avatar.src.includes("idle")
+            ? "assets/alex_speaking.gif"
+            : "assets/alex_idle.gif";
         }, 500);
+
         avatar.dataset.timer = String(intervalId);
+
       } else {
         clearInterval(Number(avatar.dataset.timer));
+
         avatar.src = "assets/alex_idle.gif";
       }
     }
-
   </script>
 
   <!-- Footer -->
   <footer class="bg-green-500 text-white py-6 text-center">
     <p>&copy; 2026 A.Lex. Sva prava zadržana.</p>
+
     <div class="flex justify-center gap-4 mt-4">
-      <img src="assets/yucom.png" alt="YUCOM" class="h-12">
-      <img src="assets/uts.png" alt="UTS" class="h-16">
-      <img src="assets/sida.png" alt="SIDA" class="h-16">
+      <img src="assets/yucom.png" alt="YUCOM" class="h-12" />
+      <img src="assets/uts.png" alt="UTS" class="h-16" />
+      <img src="assets/sida.png" alt="SIDA" class="h-16" />
     </div>
   </footer>
+
 </body>
 </html>
